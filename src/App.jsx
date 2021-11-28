@@ -32,6 +32,8 @@ import V from './Assets/img/V.JPG'
 import B from './Assets/img/B.JPG'
 import N from './Assets/img/N.JPG'
 import M from './Assets/img/M.JPG'
+import Webcam from "react-webcam";
+import ReactDOM from "react-dom";
 import {
   Navbar,
   NavbarBrand,
@@ -52,6 +54,10 @@ const App = () => {
   const [words, setWords] = React.useState('');
   const type = (letter) => {
     setWords(words + letter);
+  }
+
+  const webCanRender = () => {
+   /*  ReactDOM.render(<div>  <Webcam />, </div>, document?.getElementById('box')); */
   }
 
 
@@ -79,7 +85,7 @@ const App = () => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#">
+              <NavLink href="https://github.com/mhhomura/Manual_Alphabet">
                 GitHub
               </NavLink>
             </NavItem>
@@ -97,8 +103,8 @@ const App = () => {
                 <DropdownItem>
                   Portuguese
                 </DropdownItem>
-                <DropdownItem>
-                  Manual Alphabet
+                <DropdownItem onClick={webCanRender()}>
+                  WebCan
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
@@ -114,7 +120,7 @@ const App = () => {
           <Input value={words} />
         </Box>
       </Container>
-
+      <div id="box">
       <Box
         sx={{
           display: 'flex',
@@ -124,6 +130,7 @@ const App = () => {
             m: 1,
           },
         }}
+        
       >
         <ButtonGroup size="large" aria-label="large button group">
           <Button key="Q"  onClick={() => type("Q")} style={{backgroundColor: '#eef3f7'}}><img src={Q} alt="Q" style={{ width: '60px', }}></img></Button>
@@ -162,6 +169,9 @@ const App = () => {
         <Button key="ESPACE"  onClick={() => type(" ")}> - </Button>
         </ButtonGroup>
       </Box>
+      </div >
+
+      <Webcam />
     </div>
   )
 }
